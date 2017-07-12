@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import mybabyanubis.Anubis;
 import static mybabyanubis.Anubis.sbox;
+import utility.NegSboxComputation;
 
 /**
  *
@@ -21,9 +22,14 @@ public class SBoxAnalysis8bits {
     private ArrayList<Integer> listOfY; //list of indexes, which output Ys are used
     private int counter; //counts rows with the same values of input/output
     private ArrayList<Item> listOfAppearances;
+    private NegSboxComputation neg;
 
     public SBoxAnalysis8bits() {
         table = new int[size][size];
+        
+        // computing with negated sbox
+        neg = new NegSboxComputation();
+        neg.createNegatedData();
     }
 
     public static void printIO() {
@@ -75,7 +81,11 @@ public class SBoxAnalysis8bits {
 
         for (int i = 0; i < size; i++) {
             X = i; //input
-            Y = sbox[X]; //output
+            Y =  sbox[X]; //output sbox[X]
+            
+            // uncommnent if computation with sbox is needed
+            // Y = neg.negatedData[X];
+            
             xorX = false;
             xorY = false;
 

@@ -35,6 +35,7 @@ import linearcryptanalysis.SBoxAnalysis8bits;
 import utility.Statistics;
 import linearcryptanalysis.ThreeRoundsAnalysisVersionA;
 import linearcryptanalysis.ThreeRoundsAnalysisVersionB;
+import utility.NegSboxComputation;
 
 /**
  *
@@ -207,11 +208,10 @@ public class MyBabyAnubis {
     }
 
     public static void main(String[] args) throws IOException {
-        showHowAnubisWorks();
-        
-        //or you can call another functionality by uncommenting one of lines below:
-        
-        //analyzeSBox();
+       // showHowAnubisWorks();
+      
+        //or you can call another functionality by uncommenting one of lines below:       
+        analyzeSBox();
         // explorePaths();
         // loadAndFindPaths();
         //twoRoundsCryptanalysis();
